@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "porousrt-modeling"
+version = "0.1.0"
+description = "Pore-scale variable-density reactive-transport modeling framework"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=2.0",
+  "scipy>=1.13",
+  "matplotlib>=3.8",
+  "Pillow>=10.0",
+  "phreeqcrm>=0.0.17",
+  "fipy>=4.0",
+  "gstools>=1.6",
+]
+
+[project.scripts]
+porousrt-halite = "cases.halite_dissolution.run:main"
+porousrt-carnallite = "cases.carnallite_replacement.run:main"
+porousrt-carnallite-binary = "cases.carnallite_replacement_binary.run:main"
+porousrt-carnallite-wormhole = "cases.carnallite_wormholing.run:main"
+porousrt-carnallite-wormhole-equilibrium = "cases.carnallite_wormholing_equilibrium.run:main"
+porousrt-carnallite-wormhole-no-primary-sylvite = "cases.carnallite_wormholing_no_primary_sylvite.run:main"
+porousrt-barite-mixing = "cases.two_inlet_barite_precipitation.run:main"
+
+[tool.setuptools.packages.find]
+include = ["porousrt*", "cases*"]
+
+[tool.setuptools.package-data]
+porousrt = ["data/*.dat", "data/*.md", "py.typed"]
+"cases.halite_dissolution" = ["README.md"]
+"cases.carnallite_replacement" = ["README.md"]
+"cases.carnallite_replacement_binary" = ["README.md"]
+"cases.carnallite_wormholing" = ["README.md"]
+"cases.carnallite_wormholing_equilibrium" = ["README.md"]
+"cases.carnallite_wormholing_no_primary_sylvite" = ["README.md"]
+"cases.two_inlet_barite_precipitation" = ["README.md"]
